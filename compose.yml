@@ -1,0 +1,30 @@
+services:
+  api:
+    container_name: blog-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    environment:
+      RAILS_ENV: development
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_PORT: 5432
+      DB_HOST: blog-db
+      RAILS_MASTER_KEY: 421e234f60cd35638c427f321c2d3091
+    depends_on:
+      - db
+  db:
+    container_name: blog-db
+    image: postgres:alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USERNAME: postgres
+
+volumes:
+  db_data:
