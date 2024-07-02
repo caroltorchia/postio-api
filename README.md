@@ -1,8 +1,8 @@
-# Blog API
+# Postio API
 
 ## Overview
 
-Blog API is a Ruby on Rails application designed to handle blog posting and comments. It serves as the backend for a blog application, providing a secure and efficient way to manage users posts and discussions.
+Postio API is a Ruby on Rails application designed to handle blog posting and comments. It serves as the backend for a blog application, providing a secure and efficient way to manage users posts and discussions.
 
 ## Features
 

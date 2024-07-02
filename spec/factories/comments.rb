@@ -1,35 +1,30 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: comments
 #
 # *id*::         <tt>uuid, not null, primary key</tt>
 # *content*::    <tt>text</tt>
-# *title*::      <tt>string</tt>
 # *created_at*:: <tt>datetime, not null</tt>
 # *updated_at*:: <tt>datetime, not null</tt>
+# *post_id*::    <tt>uuid, not null</tt>
 # *user_id*::    <tt>uuid, not null</tt>
 #
 # Indexes
 #
-#  index_posts_on_title    (title)
-#  index_posts_on_user_id  (user_id)
+#  index_comments_on_post_id  (post_id)
+#  index_comments_on_user_id  (user_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (post_id => posts.id)
 #  fk_rails_...  (user_id => users.id)
 #--
 # == Schema Information End
 #++
 FactoryBot.define do
-  factory :post do
-    title { Faker::Lorem.sentence }
-    content { Faker::Lorem.paragraph }
-    user
-
-    trait :with_comments do
-      after(:create) do |post, evaluator|
-        create_list(:comment, 3, post: post, user: create(:user))
-      end
-    end
+  factory :comment do
+    content { Faker::Lorem.sentence(word_count: 10) }
+    user { create(:user) }
+    post { create(:post) }
   end
 end

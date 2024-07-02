@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       post '/login', to: 'sessions#create'
 
       # resourceful routes
-      resources :posts
+      resources :posts do
+        resources :comments
+      end
       resources :users
     end
   end

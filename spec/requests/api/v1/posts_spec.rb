@@ -231,4 +231,121 @@ RSpec.describe 'api/v1/posts', type: :request do
       end
     end
   end
+
+  path '/api/v1/posts/{id}/comments' do
+    parameter name: 'id', in: :path, type: :string, description: 'id'
+
+    get('show post comments') do
+      tags 'Post', 'Comments'
+      consumes 'application/json'
+      produces 'application/json'
+      security [bearerAuth: []]
+      response(200, 'successful') do
+        let(:user) { create(:user) }
+        let(:post) { create(:post, :with_comments, user: user) }
+        let(:id) { post.id }
+        let(:Authorization) { auth_token(user) }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+
+      response(404, 'not found') do
+        let(:id) { '29b763d7-f1fb-40a3-b570-21d8fda766d8' }
+        let(:user) { create(:user) }
+        let(:Authorization) { auth_token(user) }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+
+      response(401, 'unauthorized') do
+        let(:id) { '29b763d7-f1fb-40a3-b570-21d8fda766d8' }
+        let(:Authorization) { "Bearer token" }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+
+    post('add a new comment to post') do
+      tags 'Post', 'Comments'
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :comment, in: :body, schema: {
+        type: :object,
+        properties: {
+          content: { type: :string },
+          post_id: { type: :string },
+          user_id: { type: :string }
+        },
+        required: [
+          'content'
+        ]
+      }
+      security [bearerAuth: []]
+
+      response(201, 'created') do
+        let(:user) { create(:user) }
+        let(:post) {  }
+        let(:Authorization) { auth_token(user) }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+
+      response(422, 'unprocessable entity') do
+        let(:user) { create(:user) }
+        let(:post) {  }
+        let(:Authorization) { auth_token(user) }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+
+      response(401, 'unauthorized') do
+        let(:post) {}
+        let(:Authorization) { "Bearer token" }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+  end
 end

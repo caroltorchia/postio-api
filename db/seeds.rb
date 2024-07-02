@@ -4,5 +4,5 @@ user = User.find_or_create_by(email: 'demo@blog.com.br', name: 'Demo User') do |
 end
 
 10.times do
-  FactoryBot.create(:post, user: user)
+  FactoryBot.create(:post, :with_comments, user:)
 end

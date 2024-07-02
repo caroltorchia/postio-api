@@ -1,28 +1,28 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: comments
 #
 # *id*::         <tt>uuid, not null, primary key</tt>
 # *content*::    <tt>text</tt>
-# *title*::      <tt>string</tt>
 # *created_at*:: <tt>datetime, not null</tt>
 # *updated_at*:: <tt>datetime, not null</tt>
+# *post_id*::    <tt>uuid, not null</tt>
 # *user_id*::    <tt>uuid, not null</tt>
 #
 # Indexes
 #
-#  index_posts_on_title    (title)
-#  index_posts_on_user_id  (user_id)
+#  index_comments_on_post_id  (post_id)
+#  index_comments_on_user_id  (user_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (post_id => posts.id)
 #  fk_rails_...  (user_id => users.id)
 #--
 # == Schema Information End
 #++
-class Post < ApplicationRecord
-  belongs_to :user
-  has_many :comments, dependent: :destroy
+require 'rails_helper'
 
-  validates_presence_of :title
+RSpec.describe Comment, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
