@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/ruby/net-pop.git
+  revision: e8d0afe2773b9eb6a23c39e9e437f6fc0fc7c733
+  specs:
+    net-pop (0.1.2)
+      net-protocol
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -87,7 +94,13 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     base64 (0.2.0)
     bcrypt (3.1.20)
+    better_errors (2.10.1)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
+      rouge (>= 1.0.0)
     bigdecimal (3.1.8)
+    binding_of_caller (1.0.1)
+      debug_inspector (>= 1.2.0)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     brakeman (6.1.2)
@@ -103,6 +116,7 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    debug_inspector (1.2.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.5.1)
@@ -163,7 +177,6 @@ GEM
     net-imap (0.4.14)
       date
       net-protocol
-    net-pop (0.1.2)
     net-protocol (0.2.2)
       timeout
     net-smtp (0.5.0)
@@ -245,6 +258,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.3.1)
       strscan
+    rouge (4.3.0)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.1)
@@ -351,6 +365,8 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bcrypt (~> 3.1.7)
+  better_errors
+  binding_of_caller
   bootsnap
   brakeman
   debug
@@ -358,6 +374,7 @@ DEPENDENCIES
   faker (~> 3.2, >= 3.2.3)
   jbuilder
   jwt
+  net-pop!
   pg (~> 1.1)
   puma (>= 5.0)
   rack-cors

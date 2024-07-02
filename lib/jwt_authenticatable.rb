@@ -4,7 +4,7 @@ require 'jwt'
 # JwtAuthenticatable
 module JwtAuthenticatable
   extend ActiveSupport::Concern
-  JWT_SECRET_KEY = Rails.application.credentials.fetch(:jwt_secret_key)
+  JWT_SECRET_KEY = Rails.application.credentials.fetch(:jwt_secret_key) || Rails.application.credentials.fetch(:secret_key_base)
 
   def jwt_encode(payload, exp = 1.day.from_now)
     payload[:exp] = exp.to_i

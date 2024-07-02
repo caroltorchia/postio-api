@@ -14,6 +14,9 @@ gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Needed until Ruby 3.3.4 is released https://github.com/ruby/ruby/pull/11006
+gem 'net-pop', github: 'ruby/net-pop'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -62,6 +65,8 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubycritic', require: false
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
