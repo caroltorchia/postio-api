@@ -12,7 +12,7 @@ Postio API is a Ruby on Rails application designed to handle blog posting and co
 - **Email Notifications**: Sends emails for various events using Action Mailer. (TODO)
 - **Testing**: Comprehensive testing setup with RSpec, FactoryBot, and Faker.
 - **Documentation**: API documentation generated with Rswag.
-- **Code Quality**: Ensures high code quality with RuboCop and RubyCritic.
+- **Code Quality**: Ensures high code quality with RuboCop, Brakeman and RubyCritic.
 - **CORS**: Handles Cross-Origin Resource Sharing with Rack CORS.
 
 ## Getting Started
@@ -22,20 +22,20 @@ Postio API is a Ruby on Rails application designed to handle blog posting and co
 Before you begin, make sure you have the following installed on your system:
 
 - [PostgreSQL](https://www.postgresql.org/)
-- [Rails 7.1.3](https://rubyonrails.org/)
-- [Ruby 3.3.0](https://www.ruby-lang.org/)
+- [Rails 7.1.3.4](https://rubyonrails.org/)
+- [Ruby 3.3.3](https://www.ruby-lang.org/)
 
 ### Installation
 
 1. Clone the repository:
 
   ```bash
-  git clone https://github.com/Guistoff081/pecunia-api.git
+  git clone https://github.com/caroltorchia/postio-api.git
   ```
 
 2. Navigate to the project directory:
 ```bash
-cd pecunia-api
+cd postio-api
 ```
 
 3. Install dependencies:
@@ -70,12 +70,14 @@ Once the server is running, you can access the API endpoints at `http://localhos
 
 To authenticate, send a POST request to `/api/v1/auth/login` with the user's credentials. The response will include a JWT token.
 
-### Transactions
+### Post
 
-To create a new transaction, send a POST request to `/api/v1/transactions` with the transaction details.
+To create a new post, send a POST request to `/api/v1/post` with the title and post text content.
 
 ## Contact
 
 Elisson Guímel - elissong.silva2505@gmail.com
+Ana Carolina - caroltorchia15@gmail.com
 
-Project Link: [https://github.com/Guistoff081/pecunia-api](https://github.com/Guistoff081/pecunia-api)
+
+Project Link: [https://github.com/caroltorchia/postio-api](https://github.com/caroltorchia/postio-api)
